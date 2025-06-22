@@ -1,0 +1,6 @@
+import { iconStyleSize, iconVarStyles, type iconInterface } from "./iconInterface";
+export function Logout(props:iconInterface){
+        const classes = iconStyleSize[props.size] + iconVarStyles[props.variant]
+
+    return <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"viewBox="0 0 30 32" className = {classes} enable-background="new 0 0 30 32"  fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <path fill="#808184" d="M0,30.5C0,31.327,0.673,32,1.5,32h21c0.827,0,1.5-0.673,1.5-1.5V22c0-0.276-0.224-0.5-0.5-0.5 S23,21.724,23,22v8.5c0,0.275-0.224,0.5-0.5,0.5h-21C1.224,31,1,30.775,1,30.5v-29C1,1.225,1.224,1,1.5,1h21 C22.776,1,23,1.225,23,1.5V10c0,0.276,0.224,0.5,0.5,0.5S24,10.276,24,10V1.5C24,0.673,23.327,0,22.5,0h-21C0.673,0,0,0.673,0,1.5 V30.5z"></path> <path fill="#808184" d="M25.799,20.085c0.098,0.098,0.226,0.146,0.354,0.146s0.256-0.049,0.354-0.146l3.231-3.231 c0.195-0.195,0.195-0.512,0-0.707l-3.231-3.231c-0.195-0.195-0.512-0.195-0.707,0s-0.195,0.512,0,0.707L28.177,16H14 c-0.276,0-0.5,0.224-0.5,0.5S13.724,17,14,17h14.177l-2.378,2.378C25.604,19.573,25.604,19.89,25.799,20.085z"></path> </g> </g></svg>
+}
