@@ -1,7 +1,9 @@
 import { useNavigate } from "react-router-dom"
+import { useAuth } from "../ui/components/AuthProvider";
 
 export function useLogout(){
     const nav = useNavigate();
+    const {setIsAuth} = useAuth();
     // console.log("here from fe")
     async function logout(){
 
@@ -10,7 +12,10 @@ export function useLogout(){
             credentials:"include",
         })
         alert((await res.json()).message)
-        nav("/")
+        if(res.status === 200){
+            setIsAuth(false)
+            nav("/signin")
+        }
     }
     return logout
 }

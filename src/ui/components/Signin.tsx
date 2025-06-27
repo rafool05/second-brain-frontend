@@ -1,17 +1,15 @@
 import { useRef } from "react";
 import { Input } from "./Input";
-import { Link, Navigate, useNavigate } from "react-router-dom";
-import {useAuth } from "../../utils/useAuth";
+import { Link, useNavigate } from "react-router-dom";
 import { Button } from "./Buttons";
 import brainImage from "../../assets/brain.jpg"
+import { useAuth } from "./AuthProvider";
 export function Signin(){
     const userRef = useRef<HTMLInputElement>(null);
     const passRef= useRef<HTMLInputElement>(null);
-    const isAuth = useAuth();
+    // const isAuth = useAuth();
+    const {setIsAuth} = useAuth()
     const nav = useNavigate();
-    // if(isAuth ===null) 
-    if(isAuth != null && isAuth) return <Navigate to = '/home' replace/>
-    // console.log("at signin : " + isAuth)
 
     async function handleClick(){
         const res = await fetch("http://localhost:3000/api/v1/signin",{
@@ -27,7 +25,10 @@ export function Signin(){
         })
         const jsonRes = await res.json();
         alert(jsonRes.message)
-        if(res.status ===200) nav('/home')
+        if(res.status === 200) {
+            setIsAuth(true);    
+            nav('/home')
+        }
         // return <Navigate to = '/home'></Navigate>
     }
     return <div className = "select-none bg-purple-500 grid grid-cols-3 h-screen overflow-hidden justify-center">

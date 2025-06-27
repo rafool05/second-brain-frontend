@@ -3,14 +3,14 @@ import { CrossIcon } from "../icons/CrossIcon"
 import { Button } from "./Buttons"
 import { Input } from "./Input";
 
-export const ContentAdder = ({open, setOpen} : any) =>{
+export const ContentAdder = ({ setOpen} : any) =>{
     const inputFields = useRef(
         Array(4).fill(null).map(() => createRef<HTMLInputElement | HTMLTextAreaElement>())
     );
-    return (open && <div className = "backdrop-blur-sm z-5 bg-primary-300/75 w-full h-screen fixed flex justify-center items-center">
+    return (<div className = "backdrop-blur-sm z-5 bg-primary-300/75 w-full h-screen fixed flex justify-center items-center">
     <div className = "w-120 rounded-xl ring-neutral-200 ring-2 relative py-8 px-12 rounded-2 bg-white flex flex-col justify-between">
         <div className = "flex justify-between items-center">
-            <div className = "font-semibold">Add your content</div>
+            <div className = "font-bold text-lg">Add your content</div>
             <div className = "cursor-pointer" onClick={()=>{setOpen(false)}}><CrossIcon size = "sm" variant = "title" ></CrossIcon></div>
         </div>
         
@@ -23,6 +23,7 @@ export const ContentAdder = ({open, setOpen} : any) =>{
             <Button variant = "primary" size='md' onClick = {async () => {
                     
                     const res = await handleClick(inputFields) ;
+                    if(res==undefined) return;
                     const jsonres = await res.json();
                     alert(jsonres.message)
                     setOpen(false)
@@ -34,12 +35,14 @@ export const ContentAdder = ({open, setOpen} : any) =>{
 </div>)
 }
 const handleClick = async (inputFields : RefObject<RefObject<HTMLInputElement|HTMLTextAreaElement|null>[]>) =>{
+
     const body = {
         title : inputFields.current[0].current?.value,
         type : inputFields.current[1].current?.value,
         content : inputFields.current[2].current?.value,
         tags: inputFields.current[3]?.current?.value.trim().split(' '),
     }
+    if(Object.values(body).some(v=>v===undefined || v===null)) return;
     const res =  await fetch('http://localhost:3000/api/v1/content', {
         method : "POST",
         headers : {

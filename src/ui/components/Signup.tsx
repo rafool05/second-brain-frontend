@@ -1,14 +1,11 @@
 import {  useRef } from "react";
 import { Input } from "./Input";
-import { Link, Navigate} from "react-router-dom";
-import { useAuth } from "../../utils/useAuth";
+import { Link} from "react-router-dom";
 import { Button } from "./Buttons";
 import brainImage from "../../assets/brain_2.png" 
 export function Signup(){
-    const isAuth = useAuth()
     const userRef = useRef<HTMLInputElement>(null);
     const passRef= useRef<HTMLInputElement>(null);
-    if(isAuth) return <Navigate to='/home' replace/>
     async function handleClick(){
         const res = await fetch("http://localhost:3000/api/v1/signup",{
             method : "POST",
