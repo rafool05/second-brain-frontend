@@ -1,5 +1,5 @@
 export interface iconInterface {
-    size : "sm" | "md" | "lg",
+    size : "sm" | "md" | "lg" | "xl",
     variant : "primary" | "secondary" | "card-options" | "title"
 }
 export const iconVarStyles = {
@@ -12,4 +12,5 @@ export const iconStyleSize = {
     "sm" : "size-4 ",
     "md" : "size-5 ",
     "lg" : "size-6 ",
+    "xl" : "size-8 "
 }

@@ -8,6 +8,7 @@ import { Signin } from './ui/components/Signin'
 import { ProtectedRoutes } from './ui/components/ProtectedRoutes'
 import { AuthProvider } from './ui/components/AuthProvider'
 import { PublicRoutes } from './ui/components/PublicRoutes'
+import { SharedPage } from './ui/components/SharedPage'
 function App() {
 return (
   <AuthProvider>
@@ -17,9 +18,10 @@ return (
           <Route path = "/signup" element = {<PublicRoutes><Signup></Signup></PublicRoutes>}/>
           <Route path = "/signin" element = {<PublicRoutes><Signin></Signin></PublicRoutes>}/>
           <Route path = "/home" element = {<ProtectedRoutes><Home></Home></ProtectedRoutes>}/>
+          <Route path = "/share/:id" element = {<SharedPage/>}/>
       </Routes>
     </BrowserRouter>
-  </AuthProvider>
+   </AuthProvider>
 )
   
 

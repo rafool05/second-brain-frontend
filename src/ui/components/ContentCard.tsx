@@ -33,7 +33,7 @@ export const ContentCard = (props : ContentCardInterface) =>{
         </div>
     }
     const Tags = () =>{
-        return <div className = "flex gap-2">{props.tags.map((tag) => (
+        return <div className = "flex gap-2 flex-wrap">{props.tags.map((tag) => (
             <span className = "bg-primary-700 text-primary-900 text-xs py-1 px-2 rounded-2xl">#{tag}</span>
         ))}</div>
     }
@@ -51,8 +51,8 @@ export const ContentCard = (props : ContentCardInterface) =>{
                 ) : (
                     props.content
                 ))
-        return (<div className = "overflow-y-auto overflow-x-auto pr-2">
-            {content}
+        return (<div className = "overflow-y-auto overflow-x-auto pr-2 whitespace-pre-wrap">
+            <div>{content}</div>
         </div>
         )
     }
