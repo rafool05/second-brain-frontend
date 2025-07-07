@@ -1,54 +1,109 @@
-# React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# 🧠 Second Brain
 
-Currently, two official plugins are available:
+Second Brain is a note-taking website that quickly stores tweets, YouTube videos, and short notes so you can remember them later.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## ✨ Features
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+* **Add Content**
+  Store content of specific types:
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+  * YouTube videos
+  * X / Twitter posts
+  * Documents
+  * Short notes
+
+* **Filter Content**
+  Easily filter and browse your saved items with a sidebar menu.
+
+* **Share Your Brain**
+  Share your collection with others.
+
+---
+
+## ⚙️ Tech Stack
+
+* **Frontend:** React, TypeScript, Tailwind CSS
+* **Backend:** Node.js, Mongoose
+* **Authentication:** JWT-based Auth
+
+---
+
+## 🚀 Setup Instructions
+
+This project is split into **two separate repositories**: frontend and backend.
+
+### 1️⃣ Clone Repositories
+
+Clone each repository:
+
+```bash
+# Frontend
+git clone https://github.com/rafool05/second-brain-frontend.git
+
+# Backend
+git clone https://github.com/rafool05/second-brain-backend.git
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### 2️⃣ Install Dependencies
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+Navigate into each folder and install dependencies:
+
+```bash
+# Frontend
+cd second-brain-frontend
+npm install
+
+# Backend
+cd ../second-brain-backend
+npm install
 ```
+
+---
+
+### 3️⃣ Configure Environment Variables
+
+**Backend** `.env`:
+
+```
+DB_url=mongodb://localhost:27017/secondbrain
+JWT_SECRET=your_secret_key
+```
+
+Make sure your MongoDB instance is running locally or provide a connection string to your cloud database.
+
+---
+
+### 4️⃣ Start Development Servers
+
+In **two separate terminals**, start each server:
+
+```bash
+# Frontend
+cd second-brain-frontend
+npm run dev
+```
+
+```bash
+# Backend
+cd second-brain-backend
+npm run dev
+```
+
+---
+
+### 5️⃣ Access the Application
+
+* Frontend: [http://localhost:5173](http://localhost:5173)
+* Backend API: [http://localhost:5000](http://localhost:5000)
+
+---
+
+
+## ✨ Contact
+
+For questions or feedback, please reach out via rj05jain@gmail.com
