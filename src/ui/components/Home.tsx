@@ -34,16 +34,12 @@ export function Home() {
       )
   },[openContent])
   useEffect(() => {
-    if(!content) return
-    if (type === "all") {
-      setFilteredContent(content);
-    } else {
-        if(type =="other"){
-          setFilteredContent(content?.filter((item) => !(item.type in["youtube","twitter","x"])));
-        }
-        else setFilteredContent(content?.filter((item) => item.type === type));
+      if(!content) return
+      if (type === "all") setFilteredContent(content);
+      else if(type =="other") setFilteredContent(content?.filter((item) => !(["youtube","twitter","x"].includes(item.type))));
+      else setFilteredContent(content?.filter((item) => item.type === type));
     }
-  }, [type, content]);
+  , [type, content]);
   return<>
     {openContent && <ContentAdder setOpen = {setOpenContent}></ContentAdder>}    
     {openShare && <ShareModel setOpen = {setOpenShare}></ShareModel>}

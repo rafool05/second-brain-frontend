@@ -3,13 +3,21 @@ import { DeleteIcon } from "../icons/DeleteIcon"
 import { XIcon } from "../icons/XIcon"
 import { YoutubeIcon } from "../icons/YoutubeIcon"
 import { DocIcon } from "../icons/DocIcon"
+import { TwitterTweetEmbed } from 'react-twitter-embed';
+
+export function Tweet({ tweetId } : {tweetId : string}) {
+  return <TwitterTweetEmbed options = {{width:270, cards : 'hidden'}}tweetId={tweetId} />;
+}
+export function Youtube({ YoutubeId } : {YoutubeId : string}) {
+    return <iframe src={'https://www.youtube.com/embed/'+YoutubeId} title="YouTube video player"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" className = "w-full"></iframe>
+}
 export interface ContentCardInterface {
     title : string,
     tags : any[],
     date : Date,
     content : string,
     type : string,
-    onDelete : ()=>void,
+    onDelete ?: ()=>void,
     _id : string
 }
 const TypeIcons : Record<string,ReactNode>= {
@@ -43,17 +51,15 @@ export const ContentCard = (props : ContentCardInterface) =>{
     }
     const Content = () =>{ 
         const content = (props.type === "twitter" ? (
-                    <blockquote className="twitter-tweet " data-cards="hidden">
-                        <a href={props.content.replace("x.com","twitter.com")}></a> 
-                    </blockquote>
+                    <Tweet tweetId={props.content}/>
                 ) : props.type === "youtube" ? (
-                    <iframe src={props.content.replace("?v=","/").replace("watch","embed")} title="YouTube video player"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" className = "w-full"></iframe>
+                    <Youtube YoutubeId={props.content}/>
                 ) : (
                     props.content
                 ))
-        return (<div className = "overflow-y-auto overflow-x-auto pr-2 whitespace-pre-wrap">
-            <div>{content}</div>
-        </div>
+        return (<div className = "overflow-y-auto pr-2 whitespace-pre-wrap">
+            {content}
+            </div>
         )
     }
 
