@@ -22,7 +22,7 @@ export const Sidebar = () => {
   return (
     <div className="fixed z-5 shadow-xl shadow-neutral-200 bg-white w-48 h-full flex flex-col justify-start py-4">
         <div className = "px-4 ">
-            <BrainIcon size = "xl" variant="primary"/>
+            <BrainIcon size = "xl" variant="title"/>
         </div>
         <div className="flex flex-col p-4 gap-2 font-semibold">
         <div className="font-bold text-lg mb-4">Filters</div>
